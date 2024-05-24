@@ -1,4 +1,5 @@
 "use client";
+import Popup from '@/components/admin-panel/Popup';
 import ProductRow from '@/components/admin-panel/ProductRow';
 import Product from '@/libs/models/Product';
 import { setLoading } from '@/redux/features/loadingSlice';
@@ -34,6 +35,7 @@ const Dashboard = () => {
   },[dispatch, updateTable]);
 
   return (
+  <div>
     <div className='bg-white h-[calc(100vh-96px)] rounded-lg p-4'>
       <h2 className='text-3xl'>All Products</h2>
       <div className='mt-4 h-[calc(100vh-180px)] overflow-y-auto'>
@@ -61,9 +63,14 @@ const Dashboard = () => {
             }
           </tbody>
         </table>
-
+        </div>
       </div>
+      {openPopup && (
+      <Popup setOpenPopup = {setOpenPopup} setUpdateTable={setUpdateTable}/>
+    )}
     </div>
+
+    
   )
 }
 
